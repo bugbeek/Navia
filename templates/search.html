@@ -1,0 +1,75 @@
+{% extends 'home.html' %}
+
+{% block head %} 
+    <style>
+        .cont{
+            border-width:4px; 
+            border-style:solid; 
+            border-color:rgba(95, 87, 87, 0.199);
+            background-color: rgb(46, 46, 46);
+        }
+        .mb-1{
+            font-family:  'Gill Sans MT';
+            font-size: 110%;
+            font-style:unset;
+            font-variant: small-caps;
+        }
+    </style>
+{% endblock head %}
+
+{% block body %}
+            {% if query %}
+                    <h2 style="color:rgb(255, 255, 255);">Search results :</h2>
+                    {% for d in alldetails  %}
+                        <div class="cont no-gutters overflow-hidden flex-md-row mb-4 shadow-none p-3 mb-5  my-4 position-relative col px-md-5" > 
+                            <div class="mb-1" style="color:rgb(255, 255, 255);">Name: {{d.sku_name}}</div>
+                            <div class="mb-1"style="color:rgb(255, 255, 255);">Manufacturer: {{d.manufacturer_name}}</div>
+                            <div class="mb-1"style="color:rgb(255, 255, 255);">Salt: {{d.salt_name}}</div>
+                            <div class="mb-1"style="color:rgb(255, 255, 255);">Price: Rs {{d.price}}</div>
+                        </div>
+                    {% empty %}
+                        <div class="res">
+                        <p style="color:rgb(255, 255, 255);">No search result found</p>
+                        <p style="color:rgb(255, 255, 255);"> Your search query : <b>"{{query}}"</b> did not match any text. <br>
+                        </div>
+                    {% endfor %}
+                    </p>
+            
+            
+
+            
+                            <!-- FILTERED Pagination -->
+                    <div class="d-flex flex-column m-auto pagination mt-5">
+                    <nav aria-label="Page navigation">
+                    <ul class="pagination pg-grey justify-content-center">
+                        {% if alldetails.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?{% if query %}query={{query}}&{% endif %}page={{ alldetails.previous_page_number }}">&laquo; Previous</a>
+                            </li>
+                        {% endif %}
+
+                        {% for i in alldetails.paginator.page_range %}
+                            {% if alldetails.number == i %}
+                                <li class="page-item active"><a class="page-link">{{ i }}</a></li>
+                            {% else %}
+                                <li class="page-item" ><a class="page-link" href="?{% if query %}query={{query}}&{% endif %}page={{ i }}">{{ i }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        {% if alldetails.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?{% if query %}query={{query}}&{% endif %}page={{ alldetails.next_page_number }}">Next</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link"  href="?{% if query %}query={{query}}&{% endif %}page={{ alldetails.paginator.num_pages }}">Last &raquo;</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                    </nav>
+                    </div>
+                    <!-- end pagination-->
+            {% else %}
+                <h2 style="color:rgb(255, 255, 255);">You didn't search anything </h2>
+                
+            {% endif %}
+{% endblock %}

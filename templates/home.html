@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> 
+    {% block head %}
+
+    {% endblock head %}
+    <style>
+   body,html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 30px;
+    /* background-color: rgb(160, 153, 153); */
+    background-color: rgb(46, 46, 46);
+    /* background-color: rgb(211, 211, 211); */
+    }
+.card-body{
+  background-color: rgb(46, 46, 46);
+  margin: -8px;
+
+}
+.form-control{
+  background-color: rgb(226, 226, 226);
+  
+}
+
+.page-header {
+  margin-left: 40%;
+}
+.second {
+  border: none;
+}
+
+.contain {
+  padding: 1vw;
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.background-color p {
+  color: #000;
+  font-family: 'montserrat';
+  font-size: 5vw;
+  font-weight: bold;
+  letter-spacing: 1vw;
+  max-width: 700px;
+  text-align: center;
+  background: rgba(255, 253, 160, 1);
+  background: -webkit-linear-gradient( left, #00ffff 0%, #97fba0 25%, #97b1fb 50%, #00ffff 100%) repeat;
+  -webkit-background-clip: text;
+  -ms-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -ms-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  text-fill-color: transparent;
+  -webkit-animation-name: masked-animation;
+  -webkit-animation-duration: 50s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes masked-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -8000px -3000px;
+  }
+}
+
+@media (max-width: 768px) { 
+  .right-column{
+    margin-left: 0px;
+  }
+}
+
+@media (min-width: 768px) { 
+  .right-column{
+    margin-left: 20px;
+  }
+}
+
+.blog-post-container{
+  margin-bottom: 20px;
+  width: 100%;
+}
+.create-post-bar{
+  background-color: #fff;
+  margin-bottom:20px;
+}
+
+.left-column{
+  padding:0px;
+}
+
+.right-column{
+  padding:0px;
+}
+.lead{
+  font-size: 17px;
+}
+
+
+    </style>
+   
+  </head>
+  <body>
+      <!-- <div class="page-header">
+        <h1 style="color:rgb(255, 255, 255);"> SearchCars </h1>
+      </div> -->
+      <div class="contain">
+        <div class="background-color">
+          <p>Search Medicines</p>
+        </div>
+      </div>
+        <div class="container">
+          <br/>
+        <div class="row justify-content-center">
+                  <div class="second col-12 col-md-10 col-lg-8">
+                      <form class="card card-sm" method = "GET" action="/search">
+                          <div class="card-body row no-gutters align-items-center">
+                              <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search Medicine " name="query", id="query">
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary" type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                              <!--end of col-->
+                          </div>
+                      </form>
+                  </div>
+                  <!--end of col-->
+              </div>
+      </div>
+
+      
+      
+
+      {% block title %}  {% endblock title %}
+    <br>
+    <br>
+    <br>
+      {% block body %} {% endblock body %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+
+  </body>
+</html>
