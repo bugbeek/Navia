@@ -4,3 +4,4 @@ Install the requirements.txt file
 
 pip install -r requirements.txt
 
+Postgre is used as database here.
